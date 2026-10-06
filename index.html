@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi tienda</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!DOCTYPE html>
+  <html lang="es">
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WilsonServe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@1,800;1,900&family=Barlow:wght@500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --rojo: #e30613;
+      --negro: #111;
+      --blanco: #fff;
+      --pelota: #d7e84a;
+      --texto: #333;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 20px;
+      background: var(--blanco);
+      font-family: "Barlow", Arial, sans-serif;
+    }
+
+    .hero-tenis {
+      position: relative;
+      overflow: hidden;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 48px 28px 40px;
+      background: #f6f6f4;
+      border-radius: 6px;
+    }
+
+    /* Franja roja diagonal, como una línea de cancha */
+    .hero-tenis::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: -40px;
+      width: 26px;
+      background: var(--rojo);
+      transform: skewX(-18deg);
+    }
+
+    .hero-tenis::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 8px;
+      background: var(--negro);
+      transform: skewX(-18deg);
+    }
+
+    .contenido {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding-left: 24px;
+    }
+
+    .pelota {
+      flex: none;
+      width: clamp(52px, 9vw, 76px);
+      height: auto;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
+      font-size: clamp(2.6rem, 9vw, 4.8rem);
+      font-weight: 900;
+      font-style: italic;
+      line-height: 1;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--rojo);
+    }
+
+    h1 span { color: var(--negro); }
+
+    .slogan {
+      margin: 10px 0 0;
+      font-size: clamp(1.05rem, 3vw, 1.3rem);
+      font-weight: 500;
+      color: var(--texto);
+    }
+
+    /* Línea de cancha bajo el texto */
+    .linea-cancha {
+      position: relative;
+      margin: 28px 0 0 24px;
+      height: 2px;
+      background: var(--negro);
+    }
+
+    .linea-cancha::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: -6px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--pelota);
+      border: 2px solid var(--negro);
+    }
+
+    @media (max-width: 480px) {
+      .hero-tenis { padding: 36px 18px 32px; }
+      .contenido { gap: 12px; padding-left: 16px; }
+      .linea-cancha { margin-left: 16px; }
+    }
+  </style>
+  </head>
+  <body>
+
+  <header class="hero-tenis">
+    <div class="contenido">
+      <svg class="pelota" viewBox="0 0 64 64" aria-hidden="true">
+        <circle cx="32" cy="32" r="30" fill="#d7e84a" stroke="#111" stroke-width="2"/>
+        <path d="M8 14C22 20 24 44 8 50" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+        <path d="M56 14C42 20 40 44 56 50" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+
+      <div>
+        <h1>Wilson<span>Serve</span></h1>
+        <p class="slogan">Todo para tu próximo punto.</p>
+      </div>
+    </div>
+
+    <div class="linea-cancha" aria-hidden="true"></div>
+  </header>
+
+  </body>
+  </html>
+
+  <div class="beneficios">
+    <span>🚚 Envíos en Bogotá</span>
+    <span>🔒 Compra segura</span>
+    <span>📦 Seguimiento de pedido</span>
+  </div>
+
+  <div id="productos"></div>
+
+  <div class="carrito">
+    <h2>🧾 Carrito de Compras</h2>
+
+    <ul id="lista-carrito"></ul>
+
+    <div class="resumen">
+      <p>
+        Envío: <strong>Gratis</strong>
+      </p>
+
+      <p class="total">
+        Total: $<span id="total">0</span>
+      </p>
+    </div>
+
+    <button class="vaciar" onclick="vaciarCarrito()">
+      🧼 Vaciar Carrito
+    </button>
+
+    <button class="finalizar" onclick="finalizarCompra()">
+      ✅ Finalizar Compra
+    </button>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
