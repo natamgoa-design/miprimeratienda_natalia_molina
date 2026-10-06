@@ -1,0 +1,330 @@
+/* ===== Paleta ===== */
+:root {
+  --rojo: #e30613;
+  --rojo-oscuro: #b8040f;
+  --rojo-claro: #ff4753;      /* para texto sobre fondo negro */
+  --negro: #111;
+  --carbon: #1d1d1d;
+  --gris-linea: #333;
+  --texto: #181818;
+  --texto-suave: #5c5c5c;
+  --pelota: #d7e84a;
+  --sombra-roja: 227, 6, 19;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  font-family: "Barlow", Arial, Helvetica, sans-serif;
+  font-size: 17px;
+  line-height: 1.5;
+  background: linear-gradient(135deg, #f7f7f7 0%, #ffffff 55%, #ffe9eb 100%) fixed;
+  color: var(--texto);
+  padding: 25px;
+  margin: 0;
+  text-align: center;
+}
+
+/* ===== NOMBRE ===== */
+
+h1 {
+  font-family: "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
+  color: var(--rojo);
+  margin: 0 0 4px;
+  font-size: clamp(2.8rem, 10vw, 5rem);
+  font-weight: 900;
+  font-style: italic;
+  line-height: 1;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  text-shadow: 3px 3px 0 var(--negro);
+}
+
+.slogan {
+  color: #333;
+  font-size: clamp(1.05rem, 3vw, 1.3rem);
+  font-weight: 600;
+  margin: 8px 0 30px;
+}
+
+/* ===== BENEFICIOS ===== */
+
+.beneficios {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+
+  background: var(--negro);
+  color: #fff;
+
+  padding: 14px 18px;
+  margin: 0 auto 38px;
+
+  border-radius: 50px;
+  border-bottom: 4px solid var(--rojo);   /* detalle de línea de cancha */
+  max-width: 900px;
+
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.beneficios span {
+  font-size: 14px;
+  font-weight: 600;
+  padding: 8px 16px;
+  background: #2a2a2a;
+  border-radius: 30px;
+  white-space: nowrap;
+}
+
+/* ===== CATÁLOGO ===== */
+
+#productos {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 26px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ===== PRODUCTOS ===== */
+
+.producto {
+  position: relative;
+  display: flex;
+  flex-direction: column;     /* botones siempre alineados abajo */
+  overflow: hidden;
+
+  border: 3px solid transparent;
+  background:
+    linear-gradient(#fff, #fff) padding-box,
+    linear-gradient(135deg, var(--rojo), var(--negro)) border-box;
+
+  border-radius: 20px;
+  padding: 16px;
+  width: 230px;
+  text-align: left;
+
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Franja roja diagonal en la esquina */
+.producto::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 22px;
+  width: 14px;
+  height: 46px;
+  background: var(--rojo);
+  transform: skewX(-18deg);
+  z-index: 1;
+}
+
+.producto:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 30px rgba(var(--sombra-roja), 0.22);
+}
+
+.producto img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 12px;
+  background: #eee;
+}
+
+.producto h3 {
+  margin: 14px 0 6px;
+  font-family: "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  font-style: italic;
+  text-transform: uppercase;
+  line-height: 1.1;
+}
+
+.descripcion {
+  font-size: 15px;
+  color: var(--texto-suave);
+  min-height: 44px;
+  margin: 0 0 8px;
+}
+
+.precio {
+  font-family: "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--rojo);
+  margin: 0 0 6px;
+}
+
+/* ===== BOTONES (base compartida) ===== */
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border-radius: 30px;
+  transition: transform 0.2s ease, background 0.2s ease,
+              box-shadow 0.2s ease, color 0.2s ease;
+}
+
+button:focus-visible {
+  outline: 3px solid var(--pelota);
+  outline-offset: 3px;
+}
+
+button:active { transform: scale(0.97); }
+
+/* Botón de cada producto */
+
+.producto button {
+  margin-top: auto;
+  background: var(--rojo);
+  border: none;
+  color: #fff;
+
+  padding: 12px 18px;
+
+  font-weight: 800;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.producto button:hover {
+  background: var(--negro);
+  transform: scale(1.04);
+}
+
+.producto button:focus-visible { outline-color: var(--negro); }
+
+/* ===== CARRITO ===== */
+
+.carrito {
+  position: relative;
+  overflow: hidden;
+  margin-top: 45px;
+  padding: 26px 26px 26px 36px;
+
+  background: var(--negro);
+  color: #fff;
+
+  border-radius: 22px;
+
+  text-align: left;
+  display: inline-block;
+  width: 100%;
+  max-width: 440px;
+
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.22);
+}
+
+/* Franja roja lateral */
+.carrito::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -8px;
+  width: 20px;
+  background: var(--rojo);
+  transform: skewX(-12deg);
+}
+
+.carrito h2 {
+  margin: 0 0 12px;
+  font-family: "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
+  font-size: 30px;
+  font-weight: 800;
+  font-style: italic;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+#lista-carrito {
+  padding-left: 20px;
+}
+
+#lista-carrito li {
+  margin-bottom: 8px;
+}
+
+.resumen {
+  border-top: 2px solid var(--gris-linea);
+  margin-top: 15px;
+  padding-top: 12px;
+}
+
+.total {
+  font-family: "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--rojo-claro);
+}
+
+/* ===== BOTÓN VACIAR ===== */
+
+.vaciar {
+  background: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+
+  padding: 10px 16px;
+  margin-top: 10px;
+
+  font-weight: 700;
+}
+
+.vaciar:hover {
+  background: #fff;
+  color: var(--negro);
+}
+
+/* ===== BOTÓN FINALIZAR ===== */
+
+.finalizar {
+  background: var(--rojo);
+  border: none;
+  color: #fff;
+
+  padding: 12px 20px;
+  margin-top: 10px;
+  margin-left: 5px;
+
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+
+  box-shadow: 0 5px 15px rgba(var(--sombra-roja), 0.4);
+}
+
+.finalizar:hover {
+  background: var(--rojo-oscuro);
+  transform: translateY(-2px) scale(1.03);
+}
+
+/* ===== CELULAR ===== */
+
+@media (max-width: 520px) {
+  body { padding: 16px; }
+
+  .beneficios { border-radius: 24px; padding: 12px; }
+  .beneficios span { white-space: normal; }
+
+  .producto { width: 100%; max-width: 320px; }
+
+  .carrito { padding: 22px 18px 22px 30px; }
+  .finalizar { margin-left: 0; }
+}
+
+/* ===== REDUCIR MOVIMIENTO ===== */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
